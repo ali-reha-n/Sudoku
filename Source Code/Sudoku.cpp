@@ -34,12 +34,8 @@ inline void initialize(int array1[9][9], int array2[9][9]) {
 void generatesolution(int array[9][9]) {
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9; j++) {
-			do {
-				array[i][j] = rand() % 9 + 1;
-			} while (!gridvalid(array,i,j) || !columnvalid(array,i,j) || !rowvalid(array,i,j));
-			std::cout << array[i][j] << " ";
+			array[i][j] = (i * 3 + i / 3 + j) % 9 + 1;
 		}
-		std::cout << std::endl;
 	}
 }
 
@@ -80,6 +76,130 @@ bool gridvalid(int array[9][9], int x, int y) {
 				continue;
 			if (array[i][j] == array[x][y])
 				return 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		}
 	}
 	return 1;
