@@ -32,10 +32,85 @@ inline void initialize(int array1[9][9], int array2[9][9]) {
 }
 
 void generatesolution(int array[9][9]) {
-	for (int i = 0; i < 9; i++) {
-		for (int j = 0; j < 9; j++) {
-			array[i][j] = (i * 3 + i / 3 + j) % 9 + 1;
+	int counter=0 , backtrackedindex , valid[9] , push=0;
+	int i = 0,j = 0;
+	bool out = false;
+	while(i<9){
+		while(j<9) {
+			counter = 0;
+			do {
+				array[i][j] = rand() % 9 + 1;
+				counter++;
+				if (counter > 300) {
+					array[i][j] = 0;
+					while (i != 0 || j != 0) {
+						push = 0;
+						for (int k = 0; k < 9; k++) {
+							valid[k] = 0;
+						}
+						if (j == 0) {
+							j = 8;
+							i--;
+						}
+						else {
+							j--;
+						}
+						for (int k = 1; k <= 9; k++) {
+							array[i][j] = k;
+							if (columnvalid(array, i, j) && rowvalid(array, i, j) && gridvalid(array, i, j)) {
+								valid[push++] = k;
+							}
+						}
+						int k = 0;
+						while (valid[k] != 0) {
+							array[i][j] = valid[k];
+							if (j == 8) {
+								j = 0;
+								i++;
+							}
+							else {
+								j++;
+							}
+							if (columnvalid(array, i, j) && rowvalid(array, i, j) && gridvalid(array, i, j)) {
+								if (j == 8) {
+									j = 0;
+									i++;
+								}
+								else {
+									j++;
+								}
+								out = 1;
+								break;
+							}
+							if (j == 0) {
+								j = 8;
+								i--;
+							}
+							else {
+								j--;
+							}
+							k++;
+						}
+						if (out) {
+							out = 0;
+							break;
+						}
+						array[i][j] = 0;
+						if (j == 0) {
+							j = 8;
+							i--;
+						}
+						else {
+							j--;
+						}
+					}
+					continue;
+				}
+			} while (!columnvalid(array, i, j) || !rowvalid(array, i, j) || !gridvalid(array,i,j));
+			j++;
 		}
+		j = 0;
+		i++;
 	}
 }
 
@@ -76,130 +151,6 @@ bool gridvalid(int array[9][9], int x, int y) {
 				continue;
 			if (array[i][j] == array[x][y])
 				return 0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		}
 	}
 	return 1;
