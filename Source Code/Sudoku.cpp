@@ -8,6 +8,7 @@ bool columnvalid(int array[9][9], int x, int y);
 bool gridvalid(int array[9][9], int x, int y);
 bool rowvalid(int array[9][9], int x, int y);
 void display(int array[9][9]);
+void generateboard(int board[9][9], int  solution[9][9]);
 
 void main() {
 	srand(time(0));
@@ -16,8 +17,13 @@ void main() {
 	initialize(board, solution);
 
 	generatesolution(solution);
-
 	display(solution);
+
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	generateboard(board, solution);
+	display(board);
 
 
 }
@@ -184,5 +190,14 @@ void display(int array[9][9]) {
 			std::cout << array[i][j] << " ";
 		}
 		std::cout << std::endl;
+	}
+}
+void generateboard( int board[9][9], int solution[9][9]) {
+	for (int i = 0; i < 9; i++) {
+		for (int j = 0; j < 9; j++) {
+			if (rand() % 2 == 1) {
+				board[i][j] = solution[i][j];
+			}
+		}
 	}
 }
