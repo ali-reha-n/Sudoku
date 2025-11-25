@@ -185,19 +185,28 @@ bool rowvalid(int array[9][9], int x, int y) {
 }
 
 void display(int array[9][9]) {
+	std::cout << "\033[38;5;179m" << "    1   2   3   4   5   6   7   8   9  " << std::endl;
+	std::cout << "\033[96m" << "  +---+---+---+---+---+---+---+---+---+" << std::endl;
 	for (int i = 0; i < 9; i++) {
+		std::cout << "\033[38;5;179m" << i + 1<< "\033[96m" << " |";
 		for (int j = 0; j < 9; j++) {
-			std::cout << array[i][j] << " ";
+			if (array[i][j] == 0) {
+				std::cout << " \033[48;5;240m \033[0m\033[96m |";
+			}
+			else {
+				std::cout << " " << "\033[38;5;213m" << array[i][j] << "\033[96m" << " " << "|";
+			}
 		}
-		std::cout << std::endl;
+		std::cout << "\n  +---+---+---+---+---+---+---+---+---+" << std::endl;
 	}
+	std::cout << "\033[0m" << std::endl;
 }
 void generateboard( int board[9][9], int solution[9][9]) {
+	int pos;
 	for (int i = 0; i < 9; i++) {
-		for (int j = 0; j < 9; j++) {
-			if (rand() % 2 == 1) {
-				board[i][j] = solution[i][j];
-			}
+		for (int j = 0; j < 5; j++) {
+			pos = rand() % 9;
+			board[i][pos] = solution[i][pos];
 		}
 	}
 }
