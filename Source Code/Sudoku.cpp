@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <conio.h>
 
 inline void initialize(int array1[9][9], int array2[9][9]);
 void generatesolution(int array[9][9]);
@@ -9,21 +10,58 @@ bool gridvalid(int array[9][9], int x, int y);
 bool rowvalid(int array[9][9], int x, int y);
 void display(int array[9][9]);
 void generateboard(int board[9][9], int  solution[9][9]);
+bool solved(int board[9][9],int solution[9][9]);
+bool inputvalid(int board[9][9], int solution[9][9], int x, int y);
 
 void main() {
 	srand(time(0));
+	int row, column , digit;
 	int board[9][9], solution[9][9];
-
 	initialize(board, solution);
 
 	generatesolution(solution);
-	display(solution);
-
-	std::cout << std::endl;
-	std::cout << std::endl;
-
 	generateboard(board, solution);
 	display(board);
+
+	do {
+		std::cout << "\033[38;5;179mRow: ";
+		std::cin >> row;
+		if (row < 1 || row>9) {
+			std::cout << "Invalid Values Entered.Press any key to try again!" << std::endl;
+			_getch();
+			system("cls");
+			display(board);
+			continue;
+		}
+		std::cout << "Column: ";
+		std::cin >> column;
+		if ( column < 1 || column>9 ) {
+			std::cout << "Invalid Values Entered.Press any key to try again!" << std::endl;
+			_getch();
+			system("cls");
+			display(board);
+			continue;
+		}
+		std::cout << "Digit:";
+		std::cin >> digit;
+		if ( digit < 1 || digit>9) {
+			std::cout << "Invalid Values Entered.Press any key to try again!" << std::endl;
+			_getch();
+			system("cls");
+			display(board);
+			continue;
+		}
+		board[row - 1][column - 1] = digit;
+		if (!inputvalid(board, solution , row-1 , column-1)) {
+			std::cout << "Invalid. Press any key to try again." << std::endl;
+			board[row - 1][column - 1] = 0;
+			_getch();
+		}
+		system("cls");
+		display(board);
+	} while (!solved(board, solution));
+
+	std::cout << "Congratulations! Sudoku Solved.";
 
 
 }
@@ -199,7 +237,7 @@ void display(int array[9][9]) {
 		}
 		std::cout << "\n  +---+---+---+---+---+---+---+---+---+" << std::endl;
 	}
-	std::cout << "\033[0m" << std::endl;
+	std::cout << "\033[0m" << "\n\n\n" << std::endl;
 }
 void generateboard( int board[9][9], int solution[9][9]) {
 	int pos;
@@ -209,4 +247,18 @@ void generateboard( int board[9][9], int solution[9][9]) {
 			board[i][pos] = solution[i][pos];
 		}
 	}
+}
+
+bool solved(int board[9][9], int solution[9][9]) {
+	for (int i = 0; i < 9; i++) {
+		for (int j = 0; j < 9; j++) {
+			if (board[i][j] != solution[i][j])return 0;
+		}
+	}
+	return 1;
+}
+
+bool inputvalid(int board[9][9], int solution[9][9], int x, int y) {
+	if (board[x][y] == solution[x][y])return true;
+	else return false;
 }
