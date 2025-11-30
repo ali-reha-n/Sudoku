@@ -42,7 +42,6 @@ This project generates a random Sudoku solution, creates a playable board based 
 ## Live score updates
 
 # Scoring System
-- Action	                                Score
 - Valid move	                            +10
 - Invalid move	                            -5
 - Replace your previous valid move	        -5
@@ -70,4 +69,4 @@ This project generates a random Sudoku solution, creates a playable board based 
 Just start up the game it has sufficent instructions to make you learn along the way.
 
 
-**Real joy comes from discovering stuff, not if you know everything beforehand.**
+*Real joy comes from discovering stuff, not if you know everything beforehand.*
