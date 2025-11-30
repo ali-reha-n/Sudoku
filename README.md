@@ -1,17 +1,17 @@
-## Sudoku (C++ Console Game)
+# Sudoku (C++ Console Game)
 
 A fully interactive Sudoku game implemented in C++ using backtracking, coloured console graphics, scoring, hints, validation, and difficulty levels.
 
 This project generates a random Sudoku solution, creates a playable board based on difficulty, and allows the user to play using a clean terminal interface.
 
-## Features
-# Random Sudoku Generator
+# Features
+## Random Sudoku Generator
 
-2. Uses a recursive backtracking algorithm.
+1. Uses a recursive backtracking algorithm.
 
-3. Ensures every puzzle has one unique solution.
+2. Ensures every puzzle has one unique solution.
 
-# Three Difficulty Levels
+## Three Difficulty Levels
 
 1. Easy – 5 clues per row
 
@@ -19,7 +19,7 @@ This project generates a random Sudoku solution, creates a playable board based 
 
 3. Hard – 2 clues per row
 
-# Coloured Terminal UI
+## Coloured Terminal UI
 
 1. Gold and Cyan grid lines
 
@@ -29,7 +29,7 @@ This project generates a random Sudoku solution, creates a playable board based 
 
 4. Red markings for incorrect entries
 
-# Gameplay Functions
+## Gameplay Functions
 
 1. Add numbers to the board
 
@@ -39,35 +39,35 @@ This project generates a random Sudoku solution, creates a playable board based 
 
 4. Automatically solve the board
 
-# Live score updates
+## Live score updates
 
-## Scoring System
-Action	                              Score
-Valid move	                           +10
-Invalid move	                       -5
-Replace your previous valid move	   -5
-Replace with invalid move	           -10
-Hint	                               -5
-View wrong entries	                   -20
-Solve puzzle	                       -50
+# Scoring System
+- Action	                                Score
+- Valid move	                            +10
+- Invalid move	                            -5
+- Replace your previous valid move	        -5
+- Replace with invalid move	                -10
+- Hint	                                    -5
+- View wrong entries	                    -20
+- Solve puzzle	                            -50
 
 # Code Logic and Flow:
 
---> Start
---> Initialization of board and solution with 0s
---> Display greetings, playing instructions and take the difficulty from user
---> Generate a solution
---> Generate a board according to the difficulty level
---> Start the playing function and go on until game is solved
-    |
-    |--> Enter a number in grid
-    |--> Ask for a hint
-    |--> View the current board validity with respect to the solution
-    |--> Solve the board.
---> End
+- Start
+- Initialization of board and solution with 0s
+- Display greetings, playing instructions and take the difficulty from user
+- Generate a solution
+- Generate a board according to the difficulty level
+- Start the playing function and go on until game is solved
+-    |
+-    |--> Enter a number in grid
+-    |--> Ask for a hint
+-    |--> View the current board validity with respect to the solution
+-    |--> Solve the board.
+- End
 
-## Playing Instructions:
+# Playing Instructions:
 Just start up the game it has sufficent instructions to make you learn along the way.
 
 
-*Real joy comes from discovering stuff, not if you know everything beforehand.*
+**Real joy comes from discovering stuff, not if you know everything beforehand.**
