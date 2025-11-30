@@ -348,7 +348,7 @@ void play(int board[9][9], int solution[9][9], int forbiddenrows[], int forbidde
 				column = rand() % 9;
 			} while (board[row][column] != 0);
 			board[row][column] = solution[row][column];
-			std::cout << "\nA digit  will be placed in 3 seconds at:\nRow: " << row + 1 << "\nColumn: " << column + 1 << std::endl;
+			std::cout << "\nA digit  will be placed at:\nRow: " << row + 1 << "\nColumn: " << column + 1 << std::endl;
 			std::cout << "Press any key to continue!";
 			_getch();
 			system("cls");
@@ -376,5 +376,6 @@ void play(int board[9][9], int solution[9][9], int forbiddenrows[], int forbidde
 	system("cls");
 	display(board);
 
-	std::cout << "\033[84mCongratulations! Sudoku Solved.";
+	std::cout << "\033[84mCongratulations! Sudoku Solved."<< std::endl;
+	std::cout << "Score: " << score;
 }
