@@ -68,5 +68,16 @@ This project generates a random Sudoku solution, creates a playable board based 
 # Playing Instructions:
 Just start up the game it has sufficent instructions to make you learn along the way.
 
+# AI Tool Reflections:
+AI was used for syntax and colour codes most of the times. Rarely it was used for base logic understanding for flowcharts. Other than that all of the code is human generated. 
+
+# Future Improvemnets:
+- Add a UI
+- Use vectors for the sake of simplicity
+- Add the user to enter any valid grid size
+- Implement timer based scoring 
+- Account for memory efficiency and make it more memory efficient
+- Handling scoring more efficiently and set benchmarks for scoring
+
 
 *Real joy comes from discovering stuff, not if you know everything beforehand.*
